@@ -5,8 +5,7 @@ var SongQueue = Backbone.Collection.extend({
   model: SongModel,
 
   initialize: function() {
-    // console.log(this);
-    
+    console.log('SongQueue initialized');
     this.on('add', (song) => {
       if (this.at(0) === song) {
         this.playFirst();
@@ -29,7 +28,7 @@ var SongQueue = Backbone.Collection.extend({
   playFirst: function() {
     if (this.at(0)) {
       this.at(0).play();
-      console.log(this);
+      console.log('playFirst invoked');
     }
     //play the first song in the queue
   },
