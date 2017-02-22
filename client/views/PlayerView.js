@@ -7,14 +7,18 @@ var PlayerView = Backbone.View.extend({
 
   initialize: function() {
     console.log('PlayerView initialized');
-    console.log(this);
 
-    this.on('ended', this.setSong, this);
+    this.$el.on('ended', (() =>{
+      this.model.ended();
+    }).bind(this));
   },
 
   setSong: function(song) {
     console.log('PlayerView setSong invoked');
     this.model = song;
+    if (!this.model) {
+      this.el.stop();
+    }
     this.render();
   },
 
